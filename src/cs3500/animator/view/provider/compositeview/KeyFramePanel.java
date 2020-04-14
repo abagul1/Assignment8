@@ -1,6 +1,8 @@
 package cs3500.animator.view.provider.compositeview;
 
-import cs3500.animator.controller.AnimationController;
+import cs3500.animator.view.provider.AnimationController;
+import cs3500.animator.view.provider.Posn2D;
+import cs3500.animator.view.provider.ShapeColor;
 
 import java.awt.BorderLayout;
 
@@ -21,17 +23,17 @@ import javax.swing.JTextField;
  */
 public class KeyFramePanel extends JPanel {
 
-  JButton addShapeB;
-  JButton deleteShapeB;
-  JButton addKeyFrameB;
-  JButton deleteKeyFrameB;
-  JButton modifyKeyFrameB;
+  private JButton addShapeB;
+  private JButton deleteShapeB;
+  private JButton addKeyFrameB;
+  private JButton deleteKeyFrameB;
+  private JButton modifyKeyFrameB;
 
-  JFrame addShape;
-  JFrame deleteShape;
-  JFrame addKeyFrame;
-  JFrame deleteKeyFrame;
-  JFrame modifyKeyFrame;
+  private JFrame addShape;
+  private JFrame deleteShape;
+  private JFrame addKeyFrame;
+  private JFrame deleteKeyFrame;
+  private JFrame modifyKeyFrame;
 
   /**
    * A constructor for KeyFramePanel, doesn't take in anything, sets the initial buttons.

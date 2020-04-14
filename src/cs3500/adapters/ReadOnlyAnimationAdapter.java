@@ -5,11 +5,17 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.TreeMap;
 
+import cs3500.IAnimation;
+import cs3500.ReadOnlyAnimation;
 import cs3500.animator.view.provider.AnimationBackground;
 import cs3500.animator.view.provider.AnimationShape;
 import cs3500.animator.view.provider.ReadOnlyAnimationModel;
 
 public class ReadOnlyAnimationAdapter implements ReadOnlyAnimationModel {
+  ReadOnlyAnimation a;
+  public ReadOnlyAnimationAdapter(ReadOnlyAnimation a) {
+    this.a = a;
+  }
 
   @Override
   public String getAnimation() {

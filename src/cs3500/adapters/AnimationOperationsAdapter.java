@@ -26,7 +26,7 @@ public class AnimationOperationsAdapter implements AnimationOperations {
 
   @Override
   public void addShape(AnimationShape newShape, String name, int time) {
-
+    a.insertElement(name, newShape.getType());
   }
 
   @Override

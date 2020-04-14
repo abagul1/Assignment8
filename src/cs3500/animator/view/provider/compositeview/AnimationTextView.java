@@ -4,7 +4,8 @@ import java.io.IOException;
 
 import javax.swing.Timer;
 
-import cs3500.animator.controller.AnimationController;
+
+import cs3500.animator.view.provider.AnimationController;
 import cs3500.animator.view.provider.ReadOnlyAnimationModel;
 
 /**

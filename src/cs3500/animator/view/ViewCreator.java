@@ -4,6 +4,9 @@ import java.util.Objects;
 
 import cs3500.IAnimation;
 import cs3500.IView;
+import cs3500.adapters.ReadOnlyAnimationAdapter;
+import cs3500.animator.view.provider.ReadOnlyAnimationModel;
+import cs3500.animator.view.provider.compositeview.CompositeSwingView;
 import cs3500.animator.view.svgview.SVGView;
 import cs3500.animator.view.textview.TextView;
 import cs3500.animator.view.textview.TextViewSysOut;

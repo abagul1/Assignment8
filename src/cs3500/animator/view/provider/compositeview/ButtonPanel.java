@@ -1,6 +1,6 @@
 package cs3500.animator.view.provider.compositeview;
 
-import cs3500.animator.controller.AnimationController;
+import cs3500.animator.view.provider.AnimationController;
 
 import java.awt.BorderLayout;
 

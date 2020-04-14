@@ -6,9 +6,17 @@ import java.io.FileReader;
 import cs3500.IAnimation;
 import cs3500.IController;
 import cs3500.IView;
-import cs3500.animator.controller.AnimationController;
+import cs3500.adapters.AnimationControllerAdapter;
+import cs3500.adapters.AnimationOperationsAdapter;
+import cs3500.adapters.ReadOnlyAnimationAdapter;
+import cs3500.animator.controller.Controller;
 import cs3500.animator.model.AnimationModel;
 import cs3500.animator.view.ViewCreator;
+import cs3500.animator.view.provider.AnimationController;
+import cs3500.animator.view.provider.AnimationOperations;
+import cs3500.animator.view.provider.ReadOnlyAnimationModel;
+import cs3500.animator.view.provider.compositeview.AnimationView;
+import cs3500.animator.view.provider.compositeview.CompositeSwingView;
 
 /**
  * Main Class to run the program from.
@@ -64,9 +72,18 @@ public final class AnimationRunner {
     try {
       IAnimation a = ar.parseFile(new FileReader(inputFileName),
               ab);
-      IView view = vc.create(viewType, a, outputFileName, tempo);
-      IController controller = new AnimationController(view);
-      controller.playAnimation(a, viewType, tempo);
+      if (viewType == "provider") {
+        AnimationOperations providerAnimation = new AnimationOperationsAdapter(a);
+        AnimationView v = new CompositeSwingView("Provider Animation",
+                providerAnimation);
+        AnimationController c = new AnimationControllerAdapter(v, providerAnimation);
+        c.playAnimation();
+      }
+      else {
+        IView view = vc.create(viewType, a, outputFileName, tempo);
+        IController controller = new Controller(view);
+        controller.playAnimation(a, viewType, tempo);
+      }
     }
     catch (FileNotFoundException e) {
       throw new IllegalArgumentException("File is invalid");

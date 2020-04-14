@@ -2,7 +2,7 @@ import org.junit.Test;
 
 import cs3500.IAnimation;
 import cs3500.IController;
-import cs3500.animator.controller.AnimationController;
+import cs3500.animator.controller.Controller;
 import cs3500.animator.model.AnimationModel;
 import cs3500.animator.view.visualview.EnhancedVisualView;
 import static org.junit.Assert.assertEquals;
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class ControllerTest {
   IAnimation a = new AnimationModel(500,500,100,100);
-  IController c = new AnimationController(new EnhancedVisualView(a));
+  IController c = new Controller(new EnhancedVisualView(a));
 
   @Test
   public void testGetPaused() {

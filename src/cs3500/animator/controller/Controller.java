@@ -8,7 +8,7 @@ import cs3500.IView;
 /**
  * Class that acts as the controller in the MVC format. Interfaces the model with the view.
  */
-public class AnimationController implements IController {
+public class Controller implements IController {
   IView view;
   IAnimation a;
   Timer t;
@@ -21,7 +21,7 @@ public class AnimationController implements IController {
    * Constructor for the animation controller.
    * @param v view to show
    */
-  public AnimationController(IView v) {
+  public Controller(IView v) {
     this.view = v;
     this.paused = true;
     this.currentTick = 0;

@@ -1,5 +1,6 @@
 package cs3500.adapters;
 
+import cs3500.IElement;
 import cs3500.animator.view.provider.AnimationShape;
 import cs3500.animator.view.provider.Posn2D;
 import cs3500.animator.view.provider.ShapeColor;
@@ -7,6 +8,11 @@ import cs3500.animator.view.provider.compositeview.ISVGShapeVisitor;
 import cs3500.animator.view.provider.compositeview.ISwingShapeVisitor;
 
 public class AnimationShapeAdapter implements AnimationShape {
+  IElement e;
+  public AnimationShapeAdapter(IElement element) {
+    this.e = element;
+  }
+
   @Override
   public AnimationShape showShape(int time) {
     return null;
@@ -116,5 +122,4 @@ public class AnimationShapeAdapter implements AnimationShape {
   public void accept(ISwingShapeVisitor visitor) {
 
   }
-
 }

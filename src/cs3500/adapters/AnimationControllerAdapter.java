@@ -1,13 +1,17 @@
 package cs3500.adapters;
 
 import cs3500.animator.view.provider.AnimationController;
+import cs3500.animator.view.provider.AnimationOperations;
 import cs3500.animator.view.provider.Posn2D;
 import cs3500.animator.view.provider.ShapeColor;
+import cs3500.animator.view.provider.compositeview.AnimationView;
 
 public class AnimationControllerAdapter implements AnimationController {
-
-  public AnimationControllerAdapter() {
-
+  AnimationView v;
+  AnimationOperations a;
+  public AnimationControllerAdapter(AnimationView v, AnimationOperations a) {
+    this.v = v;
+    this.a = a;
   }
 
   @Override

@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 
-import cs3500.animator.controller.AnimationController;
+import cs3500.animator.view.provider.AnimationController;
 
 /**
  * A SaveLoadPanel class which allows the user to save and load animations.
