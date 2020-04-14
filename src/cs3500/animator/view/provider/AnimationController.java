@@ -1,7 +1,5 @@
-package cs3500.animator.controller;
+package cs3500.animator.view.provider;
 
-import cs3500.animator.model.Posn2D;
-import cs3500.animator.model.ShapeColor;
 
 /**
  * An interface representing a controller whose purpose is to mediate the interactions between the

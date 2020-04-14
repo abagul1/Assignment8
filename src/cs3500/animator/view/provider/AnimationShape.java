@@ -1,7 +1,8 @@
 package cs3500.animator.view.provider;
 
-import cs3500.animator.view.ISVGShapeVisitor;
-import cs3500.animator.view.ISwingShapeVisitor;
+
+import cs3500.animator.view.provider.compositeview.ISVGShapeVisitor;
+import cs3500.animator.view.provider.compositeview.ISwingShapeVisitor;
 
 /**
  * The interface for shapes in an Animation, includes all the actions available for AnimationShape.

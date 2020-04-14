@@ -5,7 +5,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.TreeMap;
 
-import cs3500.animator.model.AnimationShape;
 
 /**
  * An interface representing a read-only version of the AnimationModel.

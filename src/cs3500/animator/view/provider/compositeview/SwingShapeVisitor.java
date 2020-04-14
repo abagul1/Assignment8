@@ -3,7 +3,6 @@ package cs3500.animator.view.provider.compositeview;
 import java.awt.Graphics2D;
 import java.awt.Color;
 import cs3500.animator.view.provider.AnimationShape;
-import cs3500.animator.view.ISwingShapeVisitor;
 
 /**
  * An implementation of the ISwingShapeVisitor, which handles the visitor methods.

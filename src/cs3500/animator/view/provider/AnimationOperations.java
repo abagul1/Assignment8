@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.TreeMap;
 
-import cs3500.animator.model.AnimationShape;
 
 
 /**
