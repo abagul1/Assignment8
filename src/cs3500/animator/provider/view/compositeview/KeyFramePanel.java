@@ -1,8 +1,8 @@
-package cs3500.animator.view.provider.compositeview;
+package cs3500.animator.provider.view.compositeview;
 
-import cs3500.animator.view.provider.AnimationController;
-import cs3500.animator.view.provider.Posn2D;
-import cs3500.animator.view.provider.ShapeColor;
+import cs3500.animator.provider.view.AnimationController;
+import cs3500.animator.provider.view.Posn2D;
+import cs3500.animator.provider.view.ShapeColor;
 
 import java.awt.BorderLayout;
 
@@ -28,12 +28,6 @@ public class KeyFramePanel extends JPanel {
   private JButton addKeyFrameB;
   private JButton deleteKeyFrameB;
   private JButton modifyKeyFrameB;
-
-  private JFrame addShape;
-  private JFrame deleteShape;
-  private JFrame addKeyFrame;
-  private JFrame deleteKeyFrame;
-  private JFrame modifyKeyFrame;
 
   /**
    * A constructor for KeyFramePanel, doesn't take in anything, sets the initial buttons.
@@ -79,7 +73,7 @@ public class KeyFramePanel extends JPanel {
    * @param listener the controller that will handle the action
    */
   private void getAddShapeBox(AnimationController listener) {
-    addShape = new JFrame("Add Shape");
+    JFrame addShape = new JFrame("Add Shape");
     JLabel name = new JLabel("Name:");
     JTextField nameField = new JTextField(10);
     name.setLabelFor(nameField);
@@ -128,7 +122,7 @@ public class KeyFramePanel extends JPanel {
    * @param listener the controller that will handle the action
    */
   private void getDeleteShapeBox(AnimationController listener) {
-    deleteShape = new JFrame("Delete Shape");
+    JFrame deleteShape = new JFrame("Delete Shape");
     JLabel name = new JLabel("Name:");
     JTextField nameField = new JTextField(20);
     name.setLabelFor(nameField);
@@ -170,7 +164,7 @@ public class KeyFramePanel extends JPanel {
    * @param listener the controller that will handle the action
    */
   private void getAddKeyFrameBox(AnimationController listener) {
-    addKeyFrame = new JFrame("Add Keyframe");
+    JFrame addKeyFrame = new JFrame("Add Keyframe");
     JLabel name = new JLabel("Name:");
     JTextField nameField = new JTextField(10);
     name.setLabelFor(nameField);
@@ -262,7 +256,7 @@ public class KeyFramePanel extends JPanel {
    * @param listener the controller that will handle the action
    */
   private void getDeleteKeyFrameBox(AnimationController listener) {
-    deleteKeyFrame = new JFrame("Add Keyframe");
+    JFrame deleteKeyFrame = new JFrame("Add Keyframe");
     JLabel name = new JLabel("Name:");
     JTextField nameField = new JTextField(10);
     name.setLabelFor(nameField);
@@ -309,7 +303,7 @@ public class KeyFramePanel extends JPanel {
    * @param listener the controller that will handle the action
    */
   private void getModifyKeyFrameBox(AnimationController listener) {
-    modifyKeyFrame = new JFrame("Modify Keyframe");
+    JFrame modifyKeyFrame = new JFrame("Modify Keyframe");
     JLabel name = new JLabel("Name:");
     JTextField nameField = new JTextField(10);
     name.setLabelFor(nameField);

@@ -1,0 +1,53 @@
+Design Critique:
+    The overall design of the provider’s code was neat and well organized. The design of the views
+was well delegated throughout, with the appropriate classes handling each portion of the animator.
+The design of the view classes made logical sense, as well as the controller and model class to an
+extent. The main point of trouble experienced during this exercise dealt with understanding the
+design of the shape implementations and how the model handled “tweening” the key frames. The model
+seemed to call on the shapes at a given time and required the deltas to be produced in the model
+itself. This design choice was difficult to work with since it heavily relied on having a working
+knowledge of the model implementation itself and the shape class. Since our adapters only had
+knowledge of the javadocs provided it was difficult to figure out how to make the keyframes “tween”
+between themselves.
+    The two Visitor interfaces possessed an issue with flexibility: both of them utilized concrete
+implementations of shapes. There were two shape implementations that were used in these interface
+methods, called RectangleShape and EllipseShape. Difficulties could arise if an end-user needed to
+implement visitor behavior that did not involve a Rectangle or Ellipse, but another shape instead.
+They would have to spend time and effort to make sure that these methods didn’t do anything. If the
+end-user did have those shapes defined, but they have been defined differently, errors or
+unexpected behavior could result.
+
+Implementation Critique:
+	The implementations of the views were clean and succinct, with method bodies that were not
+overly complicated and did only one task. Again, the implementation of the shape transitions
+which required model and shape communications was difficult to understand and emulate in the adapter
+for the model. The editor view implementation also contained extraneous fields that did not add
+functionality to the view itself. It could also be argued that the interface was given too much
+access overall, as some of the concrete classes that implement AnimationView have most of their
+methods throwing unsupported operation exceptions.
+
+Documentation Critique:
+    Documentation played a role in the difficulty of the assignment, it was slightly confusing at
+first to implement certain methods, since it was unknown what some of the methods actually produced
+since the javadocs were vague or used very broad language. Throughout the code the javadocs covered
+the basics of each method, however, on occasion it would have been helpful to receive a more
+detailed version that describes what a method is actually doing rather than just restating the
+method name or obvious functionality of the method. For example, rather than saying the method
+shows a shape at a specific time in showShape() method, a better description could also include a
+brief outline on why and how the method is implemented. That would allow the outside reader to get
+a much better understanding of the entire project. Another example involved a getter method within
+an interface that was described as returning a specific field. As this field was specific to the
+implementation, we did not have access to it and were forced to guess at its functionality. It would
+have been more helpful to us if we had a description of the field
+
+Design and Code Limitations/Suggestions:
+    To improve the design of the model and shape relationship. A better choice could have been to
+implement a self delegating delta calculation that happens within each keyframe, by having the
+keyframe possess knowledge of its previous and next keyframes similar to a linked list.
+	Due to the similar method signatures between the ISVGShapeVisitor and ISwingShapeVisitor
+interfaces, as well as the similarity between the visitor methods within each, it is possible
+that this code could have been abstracted further. A potential solution could involve
+parameterizing these interfaces with a generic shape implementation; an end-user could then
+implement the generic visitor interfaces and parameterize them with their shape implementations.
+This solution could be favorable in scenarios in which providers expect and encourage their code
+to be extended beyond their own work.

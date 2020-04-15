@@ -1,16 +1,16 @@
 package cs3500.adapters;
 
 import javax.swing.Timer;
+import cs3500.animator.provider.view.AnimationController;
+import cs3500.animator.provider.view.AnimationOperations;
+import cs3500.animator.provider.view.Posn2D;
+import cs3500.animator.provider.view.ShapeColor;
+import cs3500.animator.provider.view.compositeview.AnimationView;
 
-import cs3500.animator.view.provider.AnimationController;
-import cs3500.animator.view.provider.AnimationOperations;
-import cs3500.animator.view.provider.AnimationShape;
-import cs3500.animator.view.provider.EllipseShape;
-import cs3500.animator.view.provider.Posn2D;
-import cs3500.animator.view.provider.RectangleShape;
-import cs3500.animator.view.provider.ShapeColor;
-import cs3500.animator.view.provider.compositeview.AnimationView;
-
+/**
+ * Represents an adapter for a controller, couples the IController with provider's
+ * AnimationController.
+ */
 public class AnimationControllerAdapter implements AnimationController {
   private AnimationView v;
   private AnimationOperations a;
@@ -18,6 +18,12 @@ public class AnimationControllerAdapter implements AnimationController {
   private boolean paused;
   private Timer t;
 
+  /**
+   * Constructor for the controller adapter.
+   * @param v Provider's view interface
+   * @param a Provider's model interface
+   * @param tempo speed
+   */
   public AnimationControllerAdapter(AnimationView v, AnimationOperations a, int tempo) {
     this.v = v;
     this.a = a;
@@ -103,11 +109,11 @@ public class AnimationControllerAdapter implements AnimationController {
 
   @Override
   public void save(String fileName) {
-
+    //Not implemented in our model
   }
 
   @Override
   public void load(String fileName) {
-
+    //Not implemented in our model
   }
 }

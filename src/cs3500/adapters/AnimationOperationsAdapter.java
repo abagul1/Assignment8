@@ -4,65 +4,46 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.TreeMap;
 
 import cs3500.IAnimation;
-import cs3500.animator.view.provider.AnimationBackground;
-import cs3500.animator.view.provider.AnimationOperations;
-import cs3500.animator.view.provider.AnimationShape;
-import cs3500.animator.view.provider.EllipseShape;
-import cs3500.animator.view.provider.Posn2D;
-import cs3500.animator.view.provider.RectangleShape;
-import cs3500.animator.view.provider.ShapeColor;
+import cs3500.animator.provider.view.AnimationBackground;
+import cs3500.animator.provider.view.AnimationOperations;
+import cs3500.animator.provider.view.AnimationShape;
+import cs3500.animator.provider.view.EllipseShape;
+import cs3500.animator.provider.view.Posn2D;
+import cs3500.animator.provider.view.RectangleShape;
+import cs3500.animator.provider.view.ShapeColor;
 import cs3500.motions.Motion;
 
+/**
+ * Represents an adapter for a model, couples the IAnimation with provider's
+ * AnimationOperations.
+ */
 public class AnimationOperationsAdapter implements AnimationOperations {
   private IAnimation a;
-  private HashMap<String, TreeMap<Integer, AnimationShape>> tl;
 
+  /**
+   * Constructor for animation operations adapter.
+   * @param a Consumer's model, IAnimation
+   */
   public AnimationOperationsAdapter(IAnimation a) {
     this.a = a;
-    this.tl = new LinkedHashMap<>();
-    this.initTimeline();
   }
 
-  private void initTimeline() {
-    for (String key : a.getElements().keySet()) {
-      tl.put(key, new TreeMap<>());
-      for (Motion m : a.getKeyFrame(key)) {
-        AnimationShape as;
-        if (a.getElement(key).getType().equals("rectangle")) {
-          as = new RectangleShape(new Posn2D(m.getParams()[1], m.getParams()[2]),
-                  new ShapeColor(m.getParams()[5], m.getParams()[6], m.getParams()[7]),
-                  m.getParams()[4], m.getParams()[3]);
-        }
-        else {
-          as = new EllipseShape(new Posn2D(m.getParams()[1], m.getParams()[2]),
-                  new ShapeColor(m.getParams()[5], m.getParams()[6], m.getParams()[7]),
-                  m.getParams()[4], m.getParams()[3]);
-        }
-        tl.get(key).put(m.getParams()[0], as);
-      }
-    }
-  }
 
   @Override
   public void declareShape(String name, String type) {
-    LinkedHashMap<String, String> newES;
-    newES = this.getExistingShape();
-    newES.put(name, type);
-    this.setExistingShape(newES);
-    tl.put(name, new TreeMap<>());
+    a.insertElement(name, type);
   }
 
   @Override
   public void addShape(AnimationShape newShape, String name, int time) {
-
+    //Not needed for this assignment
   }
 
   /**
-   * Gets the type of an element
+   * Gets the type of an element.
    * @param name name of shape
    * @return type
    */
@@ -72,16 +53,12 @@ public class AnimationOperationsAdapter implements AnimationOperations {
 
   @Override
   public void removeShape(String name) {
-    LinkedHashMap<String, String> newES;
-    newES = this.getExistingShape();
-    newES.remove(name);
-    this.setExistingShape(newES);
-    tl.remove(name);
+    a.deleteElement(name);
   }
 
   @Override
   public void move(String name, int startingTime, int endingTime, int newX, int newY) {
-
+    //Not needed for this assignment
   }
 
   @Override
@@ -96,32 +73,38 @@ public class AnimationOperationsAdapter implements AnimationOperations {
 
   @Override
   public void setBackground(int x, int y, int width, int height) {
-
+    //Not needed for this assignment
   }
 
   @Override
   public void setExistingShape(LinkedHashMap<String, String> shapes) {
-
+    //Not needed for this assignment
   }
 
   @Override
   public void setTimeline(HashMap<String, TreeMap<Integer, AnimationShape>> timeline) {
-
+    //Not needed for this assignment
   }
 
   @Override
   public void addFrame(String name, int time, AnimationShape newShape) {
-    this.tl.get(name).put(time, newShape);
+    a.insertKeyFrame(name, time, new Motion(a.getElement(name), null, time,
+            newShape.getPosition().getX(), newShape.getPosition().getY(), newShape.getWidth(),
+            newShape.getHeight(), newShape.getColor().getR(), newShape.getColor().getG(),
+            newShape.getColor().getB()));
   }
 
   @Override
   public void removeFrame(String name, int time) {
-    this.tl.get(name).remove(time);
+    a.deleteKeyFrame(name, time);
   }
 
   @Override
   public void modifyFrame(String name, int time, AnimationShape newShape) {
-    this.tl.get(name).put(time, newShape);
+    a.editKeyFrame(name, time, new Motion(a.getElement(name), null, time,
+            newShape.getPosition().getX(), newShape.getPosition().getY(), newShape.getWidth(),
+            newShape.getHeight(), newShape.getColor().getR(), newShape.getColor().getG(),
+            newShape.getColor().getB()));
   }
 
   @Override
@@ -142,15 +125,16 @@ public class AnimationOperationsAdapter implements AnimationOperations {
 
   @Override
   public AnimationShape getShape(int time, String name) {
-    return this.tl.get(name).get(time);
+    return this.getTimeline().get(name).get(time);
   }
 
   @Override
   public List<AnimationShape> getShape(int time) {
+    HashMap<String, TreeMap<Integer, AnimationShape>> tl = this.getTimeline();
     List<AnimationShape> ls = new ArrayList<>();
-    for (String name : this.tl.keySet()) {
-      if (this.tl.get(name).containsKey(time)) {
-        ls.add(this.tl.get(name).get(time));
+    for (String name : tl.keySet()) {
+      if (tl.get(name).containsKey(time)) {
+        ls.add(tl.get(name).get(time));
       }
     }
     return ls;
@@ -163,17 +147,86 @@ public class AnimationOperationsAdapter implements AnimationOperations {
 
   @Override
   public LinkedHashMap<String, String> getExistingShape() {
+    HashMap<String, TreeMap<Integer, AnimationShape>> tl = this.getTimeline();
     LinkedHashMap<String, String> existingShapes = new LinkedHashMap<>();
-    for (String key : this.tl.keySet()) {
-      Map.Entry<Integer, AnimationShape> entry = tl
-              .get(key).entrySet().iterator().next();
-      existingShapes.put(key, entry.getValue().getType());
+    for (String key : tl.keySet()) {
+      existingShapes.put(key, a.getElement(key).getType());
     }
     return existingShapes;
   }
 
   @Override
   public HashMap<String, TreeMap<Integer, AnimationShape>> getTimeline() {
-    return tl;
+    HashMap<String, TreeMap<Integer, AnimationShape>> timeline = new LinkedHashMap<>();
+    for (String key : a.getElements().keySet()) {
+      timeline.put(key, new TreeMap<>());
+      AnimationShape prevShape = null;
+      for (Motion m : a.getKeyFrame(key)) {
+        AnimationShape as;
+        float[] arr;
+        if (a.getElement(key).getType().equals("rectangle")) {
+          as = new RectangleShape(new Posn2D(m.getParams()[1], m.getParams()[2]),
+                  new ShapeColor(m.getParams()[5], m.getParams()[6], m.getParams()[7]),
+                  m.getParams()[4], m.getParams()[3]);
+          arr = this.setDeltas(m.getPrevMotion(), m);
+        } else {
+          as = new EllipseShape(new Posn2D(m.getParams()[1], m.getParams()[2]),
+                  new ShapeColor(m.getParams()[5], m.getParams()[6], m.getParams()[7]),
+                  m.getParams()[4], m.getParams()[3]);
+          arr = this.setDeltas(m.getPrevMotion(), m);
+        }
+        if (prevShape == null) {
+          timeline.get(key).put(m.getParams()[0], as);
+        }
+        else {
+          prevShape.setDeltaColor(arr[4], arr[5], arr[6]);
+          prevShape.setDeltaPosition(arr[0], arr[1]);
+          prevShape.setDeltaWidth(arr[2]);
+          prevShape.setDeltaHeight(arr[3]);
+          for (int i = m.getPrevMotion().getParams()[0] + 1; i < m.getParams()[0]; i++) {
+            timeline.get(key).put(i, prevShape.showShape(i - m.getPrevMotion().getParams()[0]));
+          }
+        }
+        prevShape = as;
+      }
+    }
+    return timeline;
+  }
+
+
+  /**
+   * Calculates the delta values to find tweening parameters between two keyframes.
+   * @param prev previous motion
+   * @param m current motion
+   * @return an array of the deltas [dx, dy, dw, dh, dr, dg, db]
+   */
+  private float[] setDeltas(Motion prev, Motion m) {
+    if (prev == null) {
+      return new float[]{0,0,0,0,0,0,0};
+    }
+
+    float dx = (float) (m.getParams()[1] - prev.getParams()[1])
+            / (m.getParams()[0] - prev.getParams()[0]);
+
+    float dy = (float) (m.getParams()[2] - prev.getParams()[2])
+            / (m.getParams()[0] - prev.getParams()[0]);
+
+    float dw = (float) (m.getParams()[3] - prev.getParams()[3])
+            / (m.getParams()[0] - prev.getParams()[0]);
+
+    float dh = (float) (m.getParams()[4] - prev.getParams()[4])
+            / (m.getParams()[0] - prev.getParams()[0]);
+
+    float dr = (float) (m.getParams()[5] - prev.getParams()[5])
+            / (m.getParams()[0] - prev.getParams()[0]);
+
+    float dg = (float) (m.getParams()[6] - prev.getParams()[6])
+            / (m.getParams()[0] - prev.getParams()[0]);
+
+    float db = (float) (m.getParams()[7] - prev.getParams()[7])
+            / (m.getParams()[0] - prev.getParams()[0]);
+
+    return new float[]{dx, dy, dw, dh, dr, dg, db};
+
   }
 }

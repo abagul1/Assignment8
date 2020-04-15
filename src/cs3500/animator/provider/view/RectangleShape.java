@@ -1,18 +1,18 @@
-package cs3500.animator.view.provider;
+package cs3500.animator.provider.view;
 
 import java.util.Objects;
 
-import cs3500.animator.view.provider.compositeview.ISVGShapeVisitor;
-import cs3500.animator.view.provider.compositeview.ISwingShapeVisitor;
+import cs3500.animator.provider.view.compositeview.ISVGShapeVisitor;
+import cs3500.animator.provider.view.compositeview.ISwingShapeVisitor;
 
 
 /**
- * A class representing an Oval shape, which extends the abstract class AShape.
+ * A class representing an Rectangle shape, which extends the abstract class AShape.
  */
-public class EllipseShape extends AShape {
+public class RectangleShape extends AShape {
 
   /**
-   * A constructor for an OvalShape, given its elements.
+   * A constructor for an RectangleShape, given its elements.
    *
    * @param position The Posn2D position of the current shape, Pos2D cannot be null and
    *                 position x and y cannot be negative
@@ -21,7 +21,7 @@ public class EllipseShape extends AShape {
    * @param height   The height of the current shape, cannot be less or equal to zero
    * @param width    The width of the current shape, cannot be less or equal to zero
    */
-  public EllipseShape(Posn2D position, ShapeColor color, int height, int width) {
+  public RectangleShape(Posn2D position, ShapeColor color, int height, int width) {
     super(position, color, height, width);
   }
 
@@ -43,18 +43,18 @@ public class EllipseShape extends AShape {
     int tHeight = height + Math.round(deltaHeight * time);
     int tWidth = width + Math.round(deltaWidth * time);
 
-    EllipseShape tEllipseShape = new EllipseShape(tPosn, tColor, tHeight, tWidth);
-    tEllipseShape.setDeltaPosition(deltaX, deltaY);
-    tEllipseShape.setDeltaColor(deltaR, deltaG, deltaB);
-    tEllipseShape.setDeltaHeight(deltaHeight);
-    tEllipseShape.setDeltaWidth(deltaWidth);
+    RectangleShape tRec = new RectangleShape(tPosn, tColor, tHeight, tWidth);
+    tRec.setDeltaPosition(deltaX, deltaY);
+    tRec.setDeltaColor(deltaR, deltaG, deltaB);
+    tRec.setDeltaHeight(deltaHeight);
+    tRec.setDeltaWidth(deltaWidth);
 
-    return tEllipseShape;
+    return tRec;
   }
 
   @Override
   public String getType() {
-    return "ellipse";
+    return "rectangle";
   }
 
   @Override
@@ -62,11 +62,11 @@ public class EllipseShape extends AShape {
     if (this == o) {
       return true;
     }
-    if (!(o instanceof EllipseShape)) {
+    if (!(o instanceof RectangleShape)) {
       return false;
     }
 
-    EllipseShape that = (EllipseShape) o;
+    RectangleShape that = (RectangleShape) o;
 
     return this.position.equals(that.position) && this.color.equals(that.color)
             && this.height == that.height && this.width == that.width;
@@ -80,11 +80,11 @@ public class EllipseShape extends AShape {
 
   @Override
   public void accept(ISwingShapeVisitor visitor) {
-    visitor.visitorEllipse(this);
+    visitor.visitorRectangle(this);
   }
 
   @Override
   public String acceptSVG(ISVGShapeVisitor visitor) {
-    return visitor.visitorEllipse(this);
+    return visitor.visitorRectangle(this);
   }
 }

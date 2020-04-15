@@ -1,12 +1,12 @@
-package cs3500.animator.view.provider.compositeview;
+package cs3500.animator.provider.view.compositeview;
 
 import java.io.IOException;
 
 import javax.swing.Timer;
 
 
-import cs3500.animator.view.provider.AnimationController;
-import cs3500.animator.view.provider.ReadOnlyAnimationModel;
+import cs3500.animator.provider.view.AnimationController;
+import cs3500.animator.provider.view.ReadOnlyAnimationModel;
 
 /**
  * An implementation of the AnimationView that renders the Animation in an text format.

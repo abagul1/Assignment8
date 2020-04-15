@@ -1,9 +1,9 @@
-package cs3500.animator.view.provider.compositeview;
+package cs3500.animator.provider.view.compositeview;
 
 import static java.util.Collections.max;
 
-import cs3500.animator.view.provider.AnimationController;
-import cs3500.animator.view.provider.ReadOnlyAnimationModel;
+import cs3500.animator.provider.view.AnimationController;
+import cs3500.animator.provider.view.ReadOnlyAnimationModel;
 
 import java.util.ArrayList;
 import java.util.List;

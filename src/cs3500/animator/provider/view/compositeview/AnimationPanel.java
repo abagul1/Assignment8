@@ -1,4 +1,4 @@
-package cs3500.animator.view.provider.compositeview;
+package cs3500.animator.provider.view.compositeview;
 
 
 import java.awt.Graphics;
@@ -7,8 +7,8 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import cs3500.animator.view.provider.AnimationShape;
-import cs3500.animator.view.provider.ReadOnlyAnimationModel;
+import cs3500.animator.provider.view.AnimationShape;
+import cs3500.animator.provider.view.ReadOnlyAnimationModel;
 
 
 /**

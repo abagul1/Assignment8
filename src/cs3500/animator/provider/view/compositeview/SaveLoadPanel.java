@@ -1,4 +1,4 @@
-package cs3500.animator.view.provider.compositeview;
+package cs3500.animator.provider.view.compositeview;
 
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
@@ -8,7 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 
-import cs3500.animator.view.provider.AnimationController;
+import cs3500.animator.provider.view.AnimationController;
 
 /**
  * A SaveLoadPanel class which allows the user to save and load animations.

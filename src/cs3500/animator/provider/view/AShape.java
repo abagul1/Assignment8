@@ -1,7 +1,7 @@
-package cs3500.animator.view.provider;
+package cs3500.animator.provider.view;
 
-import cs3500.animator.view.provider.compositeview.ISVGShapeVisitor;
-import cs3500.animator.view.provider.compositeview.ISwingShapeVisitor;
+import cs3500.animator.provider.view.compositeview.ISVGShapeVisitor;
+import cs3500.animator.provider.view.compositeview.ISwingShapeVisitor;
 
 /**
  * An abstract class which implements AnimationShape.

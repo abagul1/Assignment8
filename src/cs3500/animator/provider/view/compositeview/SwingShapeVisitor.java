@@ -1,10 +1,10 @@
-package cs3500.animator.view.provider.compositeview;
+package cs3500.animator.provider.view.compositeview;
 
 import java.awt.Graphics2D;
 import java.awt.Color;
-import cs3500.animator.view.provider.AnimationShape;
-import cs3500.animator.view.provider.EllipseShape;
-import cs3500.animator.view.provider.RectangleShape;
+import cs3500.animator.provider.view.AnimationShape;
+import cs3500.animator.provider.view.EllipseShape;
+import cs3500.animator.provider.view.RectangleShape;
 
 /**
  * An implementation of the ISwingShapeVisitor, which handles the visitor methods.

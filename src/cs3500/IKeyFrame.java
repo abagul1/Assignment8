@@ -3,7 +3,7 @@ package cs3500;
 import cs3500.motions.Motion;
 
 /**
- * Interface to represent motions/Keyframes
+ * Interface to represent motions/Keyframes.
  */
 public interface IKeyFrame {
 

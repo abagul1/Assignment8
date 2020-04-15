@@ -8,15 +8,13 @@ import cs3500.IController;
 import cs3500.IView;
 import cs3500.adapters.AnimationControllerAdapter;
 import cs3500.adapters.AnimationOperationsAdapter;
-import cs3500.adapters.ReadOnlyAnimationAdapter;
 import cs3500.animator.controller.Controller;
 import cs3500.animator.model.AnimationModel;
 import cs3500.animator.view.ViewCreator;
-import cs3500.animator.view.provider.AnimationController;
-import cs3500.animator.view.provider.AnimationOperations;
-import cs3500.animator.view.provider.ReadOnlyAnimationModel;
-import cs3500.animator.view.provider.compositeview.AnimationView;
-import cs3500.animator.view.provider.compositeview.CompositeSwingView;
+import cs3500.animator.provider.view.AnimationController;
+import cs3500.animator.provider.view.AnimationOperations;
+import cs3500.animator.provider.view.compositeview.AnimationView;
+import cs3500.animator.provider.view.compositeview.CompositeSwingView;
 
 /**
  * Main Class to run the program from.

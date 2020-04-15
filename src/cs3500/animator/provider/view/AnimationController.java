@@ -1,4 +1,4 @@
-package cs3500.animator.view.provider;
+package cs3500.animator.provider.view;
 
 
 /**

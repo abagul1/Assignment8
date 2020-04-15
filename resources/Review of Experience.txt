@@ -1,0 +1,18 @@
+    The overall experience of taking interfaces from a provider group and coupling them with the
+model and controller interfaces of our design was interesting and gave us a better understanding
+of why design patterns, well documented code, and abstraction are key to creating easy to understand
+and implement code.
+
+    We believe that we could have improved our separation between view and controller, and possibly
+delegated certain tasks in the view to their own subclasses rather than having it all in one class.
+After seeing how the provider has structured their code, we were able to see what their code did
+well and where our code could have been improved. But we also were able to see how our model was
+more understandable and self contained which made it easy for us to implement certain features
+in the adapter, and made the coupling of the model interfaces easier.
+
+    The experience with the providers seemed like an actual conversation between a customer and
+client. We would email frequently to try to better understand the motivation and underlying design
+choices made by the provider, and they would provide answers to the questions we had through
+additional documentation or explanations of the design. This assignment gave us a good idea, of
+how real world software development occurs, and why it is necessary to write well documented, and
+well designed interfaces.

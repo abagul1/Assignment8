@@ -1,8 +1,8 @@
-package cs3500.animator.view.provider.compositeview;
+package cs3500.animator.provider.view.compositeview;
 
-import cs3500.animator.view.provider.RectangleShape;
-import cs3500.animator.view.provider.AnimationShape;
-import cs3500.animator.view.provider.EllipseShape;
+import cs3500.animator.provider.view.RectangleShape;
+import cs3500.animator.provider.view.AnimationShape;
+import cs3500.animator.provider.view.EllipseShape;
 
 /**
  * Represents an interface for a Visitor for SVG view, handles visits to the shapes in SVG view.
