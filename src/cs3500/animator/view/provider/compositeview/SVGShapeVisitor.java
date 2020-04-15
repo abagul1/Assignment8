@@ -1,7 +1,10 @@
 package cs3500.animator.view.provider.compositeview;
 
 
+import cs3500.animator.view.provider.RectangleShape;
 import cs3500.animator.view.provider.AnimationShape;
+import cs3500.animator.view.provider.EllipseShape;
+
 
 /**
  * An implementation of the SVGShapeVisitor, which handles the visitor methods.

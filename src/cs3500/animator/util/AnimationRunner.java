@@ -72,11 +72,11 @@ public final class AnimationRunner {
     try {
       IAnimation a = ar.parseFile(new FileReader(inputFileName),
               ab);
-      if (viewType == "provider") {
+      if (viewType.equals("provider")) {
         AnimationOperations providerAnimation = new AnimationOperationsAdapter(a);
         AnimationView v = new CompositeSwingView("Provider Animation",
                 providerAnimation);
-        AnimationController c = new AnimationControllerAdapter(v, providerAnimation);
+        AnimationController c = new AnimationControllerAdapter(v, providerAnimation, tempo);
         c.playAnimation();
       }
       else {

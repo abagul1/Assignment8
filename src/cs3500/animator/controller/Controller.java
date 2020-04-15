@@ -9,13 +9,13 @@ import cs3500.IView;
  * Class that acts as the controller in the MVC format. Interfaces the model with the view.
  */
 public class Controller implements IController {
-  IView view;
-  IAnimation a;
-  Timer t;
-  int speed;
-  int currentTick;
-  boolean paused;
-  boolean loop;
+  private IView view;
+  private IAnimation a;
+  private Timer t;
+  private int speed;
+  private int currentTick;
+  private boolean paused;
+  private boolean loop;
 
   /**
    * Constructor for the animation controller.

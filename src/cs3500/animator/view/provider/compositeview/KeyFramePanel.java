@@ -162,7 +162,6 @@ public class KeyFramePanel extends JPanel {
     });
     done.addActionListener(e -> frame.setVisible(false));
     done.addActionListener(e -> frame.dispose());
-
   }
 
   /**

@@ -2,6 +2,8 @@ package cs3500.animator.view.provider.compositeview;
 
 
 import cs3500.animator.view.provider.AnimationShape;
+import cs3500.animator.view.provider.EllipseShape;
+import cs3500.animator.view.provider.RectangleShape;
 
 
 /**
